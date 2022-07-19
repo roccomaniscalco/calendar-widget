@@ -9,9 +9,9 @@ import {
 } from "@mantine/core"
 import { Suspense } from "react"
 import { AlertTriangle } from "tabler-icons-react"
-import CalendarWidget from "~/CalendarWidget"
-import DarkModeToggle from "~/DarkModeToggle"
-import ErrorBoundary from "~/ErrorBoundary"
+import CalendarWidget from "~/components/CalendarWidget"
+import DarkModeToggle from "~/components/DarkModeToggle"
+import ErrorBoundary from "~/components/ErrorBoundary"
 
 const appHeader = (
   <Header height={60}>

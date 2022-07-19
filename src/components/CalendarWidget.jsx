@@ -1,8 +1,8 @@
 import { Card, Indicator } from "@mantine/core"
 import { Month } from "@mantine/dates"
 import useSWR from "swr"
-import { fetchCalendar } from "~/calendar"
-import { calendarFormat } from "~/calendarFormat"
+import { fetchCalendar } from "~/utils/calendar"
+import { calendarFormat } from "~/middleware/calendarFormat"
 
 const CalendarWidget = () => {
   const { data: calendar } = useSWR("/api/calendar", fetchCalendar, {

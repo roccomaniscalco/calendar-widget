@@ -1,26 +1,35 @@
-import { useMantineTheme } from "@mantine/core"
+import { Card, Indicator } from "@mantine/core"
 import { Month } from "@mantine/dates"
 import useSWR from "swr"
 import { fetchCalendar } from "~/calendar"
 import { calendarFormat } from "~/calendarFormat"
 
 const CalendarWidget = () => {
-  const theme = useMantineTheme()
   const { data: calendar } = useSWR("/api/calendar", fetchCalendar, {
     use: [calendarFormat],
+    suspense: true,
   })
 
   return (
-    <Month
-      month={new Date()}
-      firstDayOfWeek="sunday"
-      size="sm"
-      dayStyle={(date) =>
-        calendar.has(date.toISOString())
-          ? { backgroundColor: theme.colors.red[9], color: theme.white }
-          : null
-      }
-    />
+    <Card withBorder p="xl" radius="xl">
+      <Month
+        month={new Date()}
+        firstDayOfWeek="sunday"
+        size="lg"
+        renderDay={(date) => {
+          return (
+            <Indicator
+              size={7}
+              color="red"
+              offset={14}
+              disabled={!calendar.has(date.toISOString())}
+            >
+              {date.getDate()}
+            </Indicator>
+          )
+        }}
+      />
+    </Card>
   )
 }
 

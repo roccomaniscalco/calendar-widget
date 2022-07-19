@@ -39,7 +39,7 @@ const DarkModeToggle = () => {
         checked={colorScheme === "dark"}
         onChange={toggleColorScheme}
         size="md"
-        color="indigo"
+        color="gray"
       />
     </div>
   )

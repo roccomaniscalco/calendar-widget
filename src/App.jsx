@@ -1,4 +1,5 @@
 import { AppShell, Center, Container, Group, Header, Text } from "@mantine/core"
+import CalendarWidget from "~/CalendarWidget"
 import DarkModeToggle from "~/DarkModeToggle"
 
 const appHeader = (
@@ -19,7 +20,7 @@ const App = () => {
     <AppShell padding={0} header={appHeader}>
       <Container size="sm" sx={{ height: "calc(100vh - 70px)" }}>
         <Center sx={{ height: "100%" }}>
-          <h1>hello world!</h1>
+          <CalendarWidget />
         </Center>
       </Container>
     </AppShell>

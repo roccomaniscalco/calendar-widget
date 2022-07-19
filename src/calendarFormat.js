@@ -1,8 +1,4 @@
-function convertISOtoDate(isoDate) {
-  return new Date(isoDate)
-}
-
-//
+// convert calendar to Map for perf :P
 function convertCalendarToMap(calendar) {
   const calendarMap = new Map()
   for (const isoDate in calendar) {
@@ -10,11 +6,9 @@ function convertCalendarToMap(calendar) {
     const isoTimes = calendar[isoDate]
     for (const isoTime in isoTimes) {
       const task = isoTimes[isoTime]
-      const time = convertISOtoDate(isoDate)
-      eventsMap.set(time, task)
+      eventsMap.set(isoTime, task)
     }
-    const date = convertISOtoDate(isoDate)
-    calendarMap.set(date, eventsMap)
+    calendarMap.set(isoDate, eventsMap)
   }
   return calendarMap
 }

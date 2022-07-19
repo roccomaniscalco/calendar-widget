@@ -44,18 +44,19 @@ function randomTask() {
   return tasks[Math.floor(Math.random() * tasks.length)]
 }
 
-// return calendar object with n number of random dates
-// each date has a random number of events
+// return calendar object with n number of random days
+// each day has a random number of events
 // an event is a random task and a random time
-export function randomCalendar(n) {
+function randomCalendar(n) {
   const calendar = {}
   const dates = randomDatesInCurrentMonth(n)
   dates.forEach((date) => {
-    calendar[date] = {}
+    const isoDate = date.toISOString()
     const numberOfEvents = Math.floor(Math.random() * 5) + 1
     const times = randomTimesInDate(date, numberOfEvents)
+    calendar[isoDate] = {}
     times.forEach((time) => {
-      calendar[date][time] = randomTask()
+      calendar[isoDate][time] = randomTask()
     })
   })
   return calendar

@@ -8,19 +8,16 @@ const useStyles = createStyles((theme) => ({
       cursor: "pointer",
     },
   },
-
   icon: {
     pointerEvents: "none",
     position: "absolute",
     zIndex: 1,
     top: 3,
   },
-
   iconLight: {
     left: 4,
     color: theme.white,
   },
-
   iconDark: {
     right: 4,
     color: theme.colors.gray[6],

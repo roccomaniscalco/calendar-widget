@@ -1,7 +1,8 @@
-import { Card } from "@mantine/core"
+import { Card, Center, ScrollArea, Stack } from "@mantine/core"
 import { useState } from "react"
 import useSWR from "swr"
 import AgendaCalendar from "~/components/AgendaCalendar"
+import AgendaTimeline from "~/components/AgendaTimeline"
 import { calendarFormat } from "~/middleware/calendarFormat"
 import { fetchCalendar } from "~/utils/calendar"
 
@@ -17,12 +18,19 @@ const AgendaWidget = () => {
   }
 
   return (
-    <Card withBorder p="xl" radius="sm">
-      <AgendaCalendar
-        calendar={calendar}
-        activeDate={activeDate}
-        handleDateChange={handleDateChange}
-      />
+    <Card withBorder p={0} radius="sm">
+      <Stack spacing={0} sx={{ width: 300, height: 900 }}>
+        <Center m="lg">
+          <AgendaCalendar
+            calendar={calendar}
+            activeDate={activeDate}
+            handleDateChange={handleDateChange}
+          />
+        </Center>
+        <ScrollArea sx={{ flex: 1 }} type="hover">
+          <AgendaTimeline />
+        </ScrollArea>
+      </Stack>
     </Card>
   )
 }

@@ -1,11 +1,11 @@
 import { Card } from "@mantine/core"
 import { useState } from "react"
 import useSWR from "swr"
-import CalendarMonth from "~/components/CalendarMonth"
+import AgendaCalendar from "~/components/AgendaCalendar"
 import { calendarFormat } from "~/middleware/calendarFormat"
 import { fetchCalendar } from "~/utils/calendar"
 
-const CalendarWidget = () => {
+const AgendaWidget = () => {
   const [activeDate, setActiveDate] = useState(new Date())
   const { data: calendar } = useSWR("/api/calendar", fetchCalendar, {
     use: [calendarFormat],
@@ -18,7 +18,7 @@ const CalendarWidget = () => {
 
   return (
     <Card withBorder p="xl" radius="sm">
-      <CalendarMonth
+      <AgendaCalendar
         calendar={calendar}
         activeDate={activeDate}
         handleDateChange={handleDateChange}
@@ -27,4 +27,4 @@ const CalendarWidget = () => {
   )
 }
 
-export default CalendarWidget
+export default AgendaWidget

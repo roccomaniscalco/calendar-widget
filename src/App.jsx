@@ -9,7 +9,7 @@ import {
 } from "@mantine/core"
 import { Suspense } from "react"
 import { AlertTriangle } from "tabler-icons-react"
-import CalendarWidget from "~/components/CalendarWidget"
+import AgendaWidget from "~/components/AgendaWidget"
 import DarkModeToggle from "~/components/DarkModeToggle"
 import ErrorBoundary from "~/components/ErrorBoundary"
 
@@ -31,7 +31,7 @@ const App = () => {
         <Center sx={{ height: "100%" }}>
           <ErrorBoundary fallback={<AlertTriangle size={48} />}>
             <Suspense fallback={<Loader variant="bars" color="red" />}>
-              <CalendarWidget />
+              <AgendaWidget />
             </Suspense>
           </ErrorBoundary>
         </Center>

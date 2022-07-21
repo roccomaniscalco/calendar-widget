@@ -1,5 +1,6 @@
 import { Card, Center, ScrollArea, Stack } from "@mantine/core"
 import { Suspense, useRef, useState } from "react"
+import { flushSync } from "react-dom"
 import { AlertTriangle } from "tabler-icons-react"
 import Agenda from "~/components/calendar/Agenda"
 import AgendaSkeleton from "~/components/calendar/AgendaSkeleton"
@@ -12,17 +13,12 @@ const CalendarWidget = () => {
   const scrollAreaRef = useRef()
 
   const handleDateChange = (date) => {
-    setActiveDate(date)
+    flushSync(() => setActiveDate(date))
     scrollAreaRef.current.scrollTo({ top: 0, behavior: "smooth" })
   }
 
   return (
-    <Card
-      withBorder
-      p={0}
-      radius="sm"
-      sx={{ height: "100%", minWidth: "min-content" }}
-    >
+    <Card withBorder p={0} sx={{ height: "100%", minWidth: "min-content" }}>
       <Stack spacing={0} sx={{ height: "100%" }}>
         <ErrorBoundary fallback={<AlertTriangle size={48} />}>
           <Center my="lg" mx="sm">
@@ -33,7 +29,7 @@ const CalendarWidget = () => {
               />
             </Suspense>
           </Center>
-          <ScrollArea type="hover" viewportRef={scrollAreaRef} sx={{ flex: 1 }}>
+          <ScrollArea viewportRef={scrollAreaRef} type="hover" sx={{ flex: 1 }}>
             <Suspense fallback={<AgendaSkeleton />}>
               <Agenda activeDate={activeDate} />
             </Suspense>

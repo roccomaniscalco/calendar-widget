@@ -1,5 +1,4 @@
 import { instanceOf } from "prop-types"
-import React from "react"
 import useSWR from "swr"
 import AgendaDay from "~/components/calendar/AgendaDay"
 import { fetchCalendar } from "~/dummyData/fetchCalendar"
@@ -15,7 +14,9 @@ const Agenda = ({ activeDate }) => {
   const getWeek = (date) => {
     const week = []
     for (let i = 0; i < 7; i++) {
-      week.push(new Date(date.getFullYear(), date.getMonth(), date.getDate() + i))
+      week.push(
+        new Date(date.getFullYear(), date.getMonth(), date.getDate() + i)
+      )
     }
     return week
   }

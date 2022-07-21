@@ -1,4 +1,4 @@
-import { createStyles, Text } from "@mantine/core"
+import { createStyles, Stack, Text } from "@mantine/core"
 import { oneOf, string } from "prop-types"
 
 const useStyles = createStyles((theme, _params, getRef) => ({
@@ -20,7 +20,7 @@ const useStyles = createStyles((theme, _params, getRef) => ({
   high: {
     backgroundColor:
       theme.colorScheme === "dark"
-        ? theme.fn.darken(theme.colors.red[7], 0.7)
+        ? theme.fn.darken(theme.colors.red[3], 0.8)
         : theme.colors.red[1],
     [`& .${getRef("indicator")}`]: {
       backgroundColor: theme.colors.red[7],
@@ -29,7 +29,7 @@ const useStyles = createStyles((theme, _params, getRef) => ({
   medium: {
     backgroundColor:
       theme.colorScheme === "dark"
-        ? theme.fn.darken(theme.colors.yellow[7], 0.7)
+        ? theme.fn.darken(theme.colors.yellow[3], 0.8)
         : theme.colors.yellow[1],
     [`& .${getRef("indicator")}`]: {
       backgroundColor: theme.colors.yellow[7],
@@ -38,7 +38,7 @@ const useStyles = createStyles((theme, _params, getRef) => ({
   low: {
     backgroundColor:
       theme.colorScheme === "dark"
-        ? theme.fn.darken(theme.colors.green[7], 0.7)
+        ? theme.fn.darken(theme.colors.green[3], 0.8)
         : theme.colors.green[1],
     [`& .${getRef("indicator")}`]: {
       backgroundColor: theme.colors.green[7],
@@ -59,17 +59,17 @@ const AgendaEvent = ({ name, start, end, risk }) => {
   return (
     <div className={cx(classes.root, classes[risk])}>
       {risk && <div className={classes.indicator} />}
-      <Text size="md" weight={600} sx={{ flex: 1, lineHeight: 1.4 }}>
+      <Text size="md" weight={600} sx={{ flex: 1, lineHeight: 1.3 }}>
         {name}
       </Text>
-      <div>
-        <Text size="sm" align="right" sx={{ lineHeight: 1.4 }}>
+      <Stack spacing="xs">
+        <Text size="sm" align="right" sx={{ lineHeight: 1 }}>
           {formatTime(new Date(start))}
         </Text>
-        <Text size="sm" align="right" sx={{ lineHeight: 1.4 }}>
+        <Text size="sm" align="right" sx={{ lineHeight: 1 }}>
           {formatTime(new Date(end))}
         </Text>
-      </div>
+      </Stack>
     </div>
   )
 }

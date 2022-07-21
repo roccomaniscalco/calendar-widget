@@ -1,7 +1,7 @@
 import { Card, Center, ScrollArea, Stack } from "@mantine/core"
 import { useState } from "react"
-import AgendaCalendar from "~/components/AgendaCalendar"
-import AgendaTimeline from "~/components/AgendaList"
+import AgendaCalendar from "~/components/calendar/DatePicker"
+import AgendaTimeline from "~/components/calendar/AgendaDay"
 
 const AgendaWidget = () => {
   const [activeDate, setActiveDate] = useState(new Date())

@@ -1,7 +1,7 @@
 import { Box, createStyles, Stack, Text } from "@mantine/core"
 import { instanceOf } from "prop-types"
 import useSWR from "swr"
-import AgendaListItem from "~/components/AgendaListItem"
+import AgendaListItem from "~/components/calendar/AgendaEvent"
 import { fetchCalendar } from "~/dummyData/fetchCalendar"
 import { calendarAsMap } from "~/middleware/calendarFormat"
 

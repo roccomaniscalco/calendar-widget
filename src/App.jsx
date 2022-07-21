@@ -9,7 +9,7 @@ import {
 } from "@mantine/core"
 import { Suspense } from "react"
 import { AlertTriangle } from "tabler-icons-react"
-import AgendaWidget from "~/components/AgendaWidget"
+import AgendaWidget from "~/components/calendar/CalendarWidget"
 import DarkModeToggle from "~/components/DarkModeToggle"
 import ErrorBoundary from "~/components/ErrorBoundary"
 

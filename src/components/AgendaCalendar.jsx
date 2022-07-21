@@ -16,6 +16,22 @@ const useStyles = createStyles((theme) => ({
     textAlign: "center",
   },
 
+  high: {
+    backgroundColor: theme.colors.red[5],
+  },
+  medium: {
+    backgroundColor: theme.colors.yellow[5],
+  },
+  low: {
+    backgroundColor: theme.colors.green[5],
+  },
+  none: {
+    backgroundColor:
+      theme.colorScheme === "dark"
+        ? theme.colors.dark[0]
+        : theme.colors.gray[7],
+  },
+
   // override default styles
   outside: {
     opacity: 0,
@@ -56,18 +72,19 @@ const AgendaCalendar = ({ activeDate, handleDateChange }) => {
           [classes.selected]: modifiers.selected,
         })
       }
-      renderDay={(date) => {
-        return (
-          <Indicator
-            disabled={!calendar.has(date.toISOString())}
-            color="red"
-            size={5}
-            offset={10}
-          >
-            {date.getDate()}
-          </Indicator>
-        )
-      }}
+      renderDay={(date) => (
+        <Indicator
+          disabled={!calendar.has(date.toISOString())}
+          classNames={{
+            indicator:
+              classes[calendar.get(date.toISOString())?.risk || "none"],
+          }}
+          size={5}
+          offset={10}
+        >
+          {date.getDate()}
+        </Indicator>
+      )}
     />
   )
 }

@@ -1,7 +1,7 @@
 import { Box, createStyles, Stack, Text } from "@mantine/core"
 import { instanceOf } from "prop-types"
 import useSWR from "swr"
-import AgendaListItem from "~/components/calendar/AgendaEvent"
+import AgendaEvent from "~/components/calendar/AgendaEvent"
 import { fetchCalendar } from "~/dummyData/fetchCalendar"
 import { calendarAsMap } from "~/middleware/calendarFormat"
 
@@ -20,7 +20,7 @@ const useStyles = createStyles((theme) => ({
   },
 }))
 
-const AgendaTimeline = ({ activeDate }) => {
+const AgendaDay = ({ activeDate }) => {
   const { classes } = useStyles()
   const { data: calendar } = useSWR("/api/calendar", fetchCalendar, {
     use: [calendarAsMap],
@@ -44,7 +44,7 @@ const AgendaTimeline = ({ activeDate }) => {
       </Box>
       <Stack spacing="xs" pb="md">
         {events.map((event, idx) => (
-          <AgendaListItem
+          <AgendaEvent
             name={event.name}
             start={new Date(event.start)}
             end={new Date(event.end)}
@@ -57,8 +57,8 @@ const AgendaTimeline = ({ activeDate }) => {
   )
 }
 
-AgendaTimeline.propTypes = {
+AgendaDay.propTypes = {
   activeDate: instanceOf(Date).isRequired,
 }
 
-export default AgendaTimeline
+export default AgendaDay

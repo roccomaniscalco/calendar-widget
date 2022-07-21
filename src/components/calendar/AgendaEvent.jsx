@@ -27,7 +27,7 @@ const useStyles = createStyles((theme) => ({
   },
 }))
 
-const AgendaListItem = ({ name, start, end, risk }) => {
+const AgendaEvent = ({ name, start, end, risk }) => {
   const { classes, cx } = useStyles()
 
   const formatTime = (date) => {
@@ -44,10 +44,10 @@ const AgendaListItem = ({ name, start, end, risk }) => {
         {name}
       </Text>
       <div>
-        <Text size="xs"  align="right" mt={-4}>
+        <Text size="xs" align="right" mt={-4}>
           {formatTime(start)}
         </Text>
-        <Text size="xs"  align="right" >
+        <Text size="xs" align="right">
           {formatTime(end)}
         </Text>
       </div>
@@ -55,11 +55,11 @@ const AgendaListItem = ({ name, start, end, risk }) => {
   )
 }
 
-AgendaListItem.propTypes = {
+AgendaEvent.propTypes = {
   name: string.isRequired,
   start: instanceOf(Date).isRequired,
   end: instanceOf(Date).isRequired,
   risk: oneOf(["low", "medium", "high"]),
 }
 
-export default AgendaListItem
+export default AgendaEvent

@@ -1,9 +1,9 @@
 import { Card, Center, ScrollArea, Stack } from "@mantine/core"
 import { useState } from "react"
-import AgendaCalendar from "~/components/calendar/DatePicker"
-import AgendaTimeline from "~/components/calendar/AgendaDay"
+import AgendaDay from "~/components/calendar/AgendaDay"
+import DatePicker from "~/components/calendar/DatePicker"
 
-const AgendaWidget = () => {
+const CalendarWidget = () => {
   const [activeDate, setActiveDate] = useState(new Date())
 
   const handleDateChange = (date) => {
@@ -14,17 +14,17 @@ const AgendaWidget = () => {
     <Card withBorder p={0} radius="sm">
       <Stack spacing={0} sx={{ width: 300, height: 600 }}>
         <Center m="lg">
-          <AgendaCalendar
+          <DatePicker
             activeDate={activeDate}
             handleDateChange={handleDateChange}
           />
         </Center>
         <ScrollArea type="hover" sx={{ flex: 1 }}>
-          <AgendaTimeline activeDate={activeDate} />
+          <AgendaDay activeDate={activeDate} />
         </ScrollArea>
       </Stack>
     </Card>
   )
 }
 
-export default AgendaWidget
+export default CalendarWidget

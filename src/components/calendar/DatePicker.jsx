@@ -50,7 +50,7 @@ const useStyles = createStyles((theme) => ({
   },
 }))
 
-const AgendaCalendar = ({ activeDate, handleDateChange }) => {
+const DatePicker = ({ activeDate, handleDateChange }) => {
   const { classes, cx } = useStyles()
   const { data: calendar } = useSWR("/api/calendar", fetchCalendar, {
     use: [calendarAsMap],
@@ -88,9 +88,9 @@ const AgendaCalendar = ({ activeDate, handleDateChange }) => {
   )
 }
 
-AgendaCalendar.propTypes = {
+DatePicker.propTypes = {
   activeDate: instanceOf(Date).isRequired,
   handleDateChange: func.isRequired,
 }
 
-export default AgendaCalendar
+export default DatePicker

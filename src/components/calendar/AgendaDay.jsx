@@ -43,15 +43,21 @@ const AgendaDay = ({ activeDate }) => {
         </Text>
       </Box>
       <Stack spacing="xs" pb="md">
-        {events.map((event, idx) => (
-          <AgendaEvent
-            name={event.name}
-            start={new Date(event.start)}
-            end={new Date(event.end)}
-            risk={event.risk}
-            key={idx}
-          />
-        ))}
+        {events.length > 0 ? (
+          events.map((event, idx) => (
+            <AgendaEvent
+              name={event.name}
+              start={new Date(event.start)}
+              end={new Date(event.end)}
+              risk={event.risk}
+              key={idx}
+            />
+          ))
+        ) : (
+          <Text size="sm" weight={600}>
+            No events for the day
+          </Text>
+        )}
       </Stack>
     </Box>
   )

@@ -4,6 +4,6 @@ export function fetchCalendar() {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(calendar)
-    }, 1000)
+    }, 2000)
   })
 }

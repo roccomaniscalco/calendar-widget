@@ -40,14 +40,14 @@ const AgendaEvent = ({ name, start, end, risk }) => {
   return (
     <div className={classes.root}>
       {risk && <div className={cx(classes.indicator, classes[risk])} />}
-      <Text size="sm" weight={600} mt={-4} sx={{ flex: 1 }}>
+      <Text size="md" weight={600} sx={{ flex: 1, lineHeight: 1.2 }}>
         {name}
       </Text>
       <div>
-        <Text size="xs" align="right" mt={-4}>
+        <Text size="sm" align="right" sx={{lineHeight: 1.2}}>
           {formatTime(start)}
         </Text>
-        <Text size="xs" align="right">
+        <Text size="sm" align="right" sx={{lineHeight: 1.2}}>
           {formatTime(end)}
         </Text>
       </div>

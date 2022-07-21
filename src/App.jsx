@@ -18,7 +18,7 @@ const appHeader = (
 const App = () => {
   return (
     <AppShell padding={0} header={appHeader}>
-      <Container size="xl" p="xl" sx={{ height: "calc(100vh - 60px)" }}>
+      <Container size="xs" p="xl" sx={{ height: "calc(100vh - 60px)" }}>
         <CalendarWidget />
       </Container>
     </AppShell>

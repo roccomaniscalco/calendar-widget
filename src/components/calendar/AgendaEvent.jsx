@@ -1,5 +1,5 @@
 import { createStyles, Text } from "@mantine/core"
-import { instanceOf, oneOf, string } from "prop-types"
+import { oneOf, string } from "prop-types"
 
 const useStyles = createStyles((theme) => ({
   root: {
@@ -44,11 +44,11 @@ const AgendaEvent = ({ name, start, end, risk }) => {
         {name}
       </Text>
       <div>
-        <Text size="sm" align="right" sx={{lineHeight: 1.2}}>
-          {formatTime(start)}
+        <Text size="sm" align="right" sx={{ lineHeight: 1.2 }}>
+          {formatTime(new Date(start))}
         </Text>
-        <Text size="sm" align="right" sx={{lineHeight: 1.2}}>
-          {formatTime(end)}
+        <Text size="sm" align="right" sx={{ lineHeight: 1.2 }}>
+          {formatTime(new Date(end))}
         </Text>
       </div>
     </div>
@@ -57,8 +57,8 @@ const AgendaEvent = ({ name, start, end, risk }) => {
 
 AgendaEvent.propTypes = {
   name: string.isRequired,
-  start: instanceOf(Date).isRequired,
-  end: instanceOf(Date).isRequired,
+  start: string.isRequired,
+  end: string.isRequired,
   risk: oneOf(["low", "medium", "high"]),
 }
 

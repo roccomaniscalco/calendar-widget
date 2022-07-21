@@ -1,9 +1,6 @@
 import { Box, createStyles, Stack, Text } from "@mantine/core"
-import { instanceOf } from "prop-types"
-import useSWR from "swr"
+import { arrayOf, instanceOf, oneOf, shape, string } from "prop-types"
 import AgendaEvent from "~/components/calendar/AgendaEvent"
-import { fetchCalendar } from "~/dummyData/fetchCalendar"
-import { calendarAsMap } from "~/middleware/calendarFormat"
 
 const useStyles = createStyles((theme) => ({
   stickyHeader: {
@@ -20,13 +17,8 @@ const useStyles = createStyles((theme) => ({
   },
 }))
 
-const AgendaDay = ({ activeDate }) => {
+const AgendaDay = ({ date, events }) => {
   const { classes } = useStyles()
-  const { data: calendar } = useSWR("/api/calendar", fetchCalendar, {
-    use: [calendarAsMap],
-    suspense: true,
-  })
-  const events = calendar.get(activeDate.toISOString())?.events || []
 
   const formatDate = (date) =>
     date.toLocaleDateString("en-US", {
@@ -39,7 +31,7 @@ const AgendaDay = ({ activeDate }) => {
     <Box mx="md">
       <Box className={classes.stickyHeader}>
         <Text color="dimmed" size="sm">
-          {formatDate(activeDate)}
+          {formatDate(date)}
         </Text>
       </Box>
       <Stack spacing="xs" pb="md">
@@ -47,8 +39,8 @@ const AgendaDay = ({ activeDate }) => {
           events.map((event, idx) => (
             <AgendaEvent
               name={event.name}
-              start={new Date(event.start)}
-              end={new Date(event.end)}
+              start={event.start}
+              end={event.end}
               risk={event.risk}
               key={idx}
             />
@@ -64,7 +56,15 @@ const AgendaDay = ({ activeDate }) => {
 }
 
 AgendaDay.propTypes = {
-  activeDate: instanceOf(Date).isRequired,
+  date: instanceOf(Date).isRequired,
+  events: arrayOf(
+    shape({
+      name: string.isRequired,
+      start: string.isRequired,
+      end: string.isRequired,
+      risk: oneOf(["low", "medium", "high"]),
+    })
+  ),
 }
 
 export default AgendaDay

@@ -16,19 +16,19 @@ const useStyles = createStyles((theme) => ({
     textAlign: "center",
   },
   high: {
-    backgroundColor: theme.colors.red[5],
+    backgroundColor: theme.colors.red[7],
   },
   medium: {
-    backgroundColor: theme.colors.yellow[5],
+    backgroundColor: theme.colors.yellow[7],
   },
   low: {
-    backgroundColor: theme.colors.green[5],
+    backgroundColor: theme.colors.green[7],
   },
   none: {
     backgroundColor:
       theme.colorScheme === "dark"
-        ? theme.colors.dark[0]
-        : theme.colors.gray[7],
+        ? theme.colors.gray[5]
+        : theme.colors.gray[5],
   },
 
   // override default styles

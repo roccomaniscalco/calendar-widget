@@ -46,7 +46,7 @@ const AgendaDay = ({ date, events }) => {
             />
           ))
         ) : (
-          <Text size="sm" weight={600}>
+          <Text size="sm" color="dimmed" weight={600}>
             No events for the day
           </Text>
         )}

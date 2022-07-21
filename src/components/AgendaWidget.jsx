@@ -1,17 +1,10 @@
 import { Card, Center, ScrollArea, Stack } from "@mantine/core"
 import { useState } from "react"
-import useSWR from "swr"
 import AgendaCalendar from "~/components/AgendaCalendar"
 import AgendaTimeline from "~/components/AgendaTimeline"
-import { fetchCalendar } from "~/dummyData/fetchCalendar"
-import { calendarAsMap } from "~/middleware/calendarFormat"
 
 const AgendaWidget = () => {
   const [activeDate, setActiveDate] = useState(new Date())
-  const { data: calendar } = useSWR("/api/calendar", fetchCalendar, {
-    use: [calendarAsMap],
-    suspense: true,
-  })
 
   const handleDateChange = (date) => {
     setActiveDate(date)
@@ -22,7 +15,6 @@ const AgendaWidget = () => {
       <Stack spacing={0} sx={{ width: 300, height: 900 }}>
         <Center m="lg">
           <AgendaCalendar
-            calendar={calendar}
             activeDate={activeDate}
             handleDateChange={handleDateChange}
           />

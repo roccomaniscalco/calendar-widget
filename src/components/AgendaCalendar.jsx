@@ -1,6 +1,9 @@
 import { createStyles, Indicator } from "@mantine/core"
 import { Calendar } from "@mantine/dates"
 import { func, instanceOf } from "prop-types"
+import useSWR from "swr"
+import { fetchCalendar } from "~/dummyData/fetchCalendar"
+import { calendarAsMap } from "~/middleware/calendarFormat"
 
 const useStyles = createStyles((theme) => ({
   activeDate: {
@@ -32,8 +35,13 @@ const useStyles = createStyles((theme) => ({
   },
 }))
 
-const AgendaCalendar = ({ calendar, activeDate, handleDateChange }) => {
+const AgendaCalendar = ({ activeDate, handleDateChange }) => {
   const { classes, cx } = useStyles()
+  const { data: calendar } = useSWR("/api/calendar", fetchCalendar, {
+    use: [calendarAsMap],
+    suspense: true,
+  })
+
   return (
     <Calendar
       value={activeDate}
@@ -65,7 +73,6 @@ const AgendaCalendar = ({ calendar, activeDate, handleDateChange }) => {
 }
 
 AgendaCalendar.propTypes = {
-  calendar: instanceOf(Map).isRequired,
   activeDate: instanceOf(Date).isRequired,
   handleDateChange: func.isRequired,
 }

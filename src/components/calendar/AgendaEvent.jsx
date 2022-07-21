@@ -1,7 +1,7 @@
 import { createStyles, Text } from "@mantine/core"
 import { oneOf, string } from "prop-types"
 
-const useStyles = createStyles((theme) => ({
+const useStyles = createStyles((theme, _params, getRef) => ({
   root: {
     display: "flex",
     gap: theme.spacing.xs,
@@ -13,17 +13,36 @@ const useStyles = createStyles((theme) => ({
         : theme.colors.gray[1],
   },
   indicator: {
+    ref: getRef("indicator"),
     borderRadius: theme.radius.md,
     width: 3,
   },
   high: {
-    backgroundColor: theme.colors.red[7],
+    backgroundColor:
+      theme.colorScheme === "dark"
+        ? theme.fn.darken(theme.colors.red[7], 0.7)
+        : theme.colors.red[1],
+    [`& .${getRef("indicator")}`]: {
+      backgroundColor: theme.colors.red[7],
+    },
   },
   medium: {
-    backgroundColor: theme.colors.yellow[7],
+    backgroundColor:
+      theme.colorScheme === "dark"
+        ? theme.fn.darken(theme.colors.yellow[7], 0.7)
+        : theme.colors.yellow[1],
+    [`& .${getRef("indicator")}`]: {
+      backgroundColor: theme.colors.yellow[7],
+    },
   },
   low: {
-    backgroundColor: theme.colors.green[7],
+    backgroundColor:
+      theme.colorScheme === "dark"
+        ? theme.fn.darken(theme.colors.green[7], 0.7)
+        : theme.colors.green[1],
+    [`& .${getRef("indicator")}`]: {
+      backgroundColor: theme.colors.green[7],
+    },
   },
 }))
 
@@ -38,16 +57,16 @@ const AgendaEvent = ({ name, start, end, risk }) => {
   }
 
   return (
-    <div className={classes.root}>
-      {risk && <div className={cx(classes.indicator, classes[risk])} />}
-      <Text size="md" weight={600} sx={{ flex: 1, lineHeight: 1.2 }}>
+    <div className={cx(classes.root, classes[risk])}>
+      {risk && <div className={classes.indicator} />}
+      <Text size="md" weight={600} sx={{ flex: 1, lineHeight: 1.4 }}>
         {name}
       </Text>
       <div>
-        <Text size="sm" align="right" sx={{ lineHeight: 1.2 }}>
+        <Text size="sm" align="right" sx={{ lineHeight: 1.4 }}>
           {formatTime(new Date(start))}
         </Text>
-        <Text size="sm" align="right" sx={{ lineHeight: 1.2 }}>
+        <Text size="sm" align="right" sx={{ lineHeight: 1.4 }}>
           {formatTime(new Date(end))}
         </Text>
       </div>

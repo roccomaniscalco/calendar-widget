@@ -3,13 +3,13 @@ import { useState } from "react"
 import useSWR from "swr"
 import AgendaCalendar from "~/components/AgendaCalendar"
 import AgendaTimeline from "~/components/AgendaTimeline"
-import { calendarFormat } from "~/middleware/calendarFormat"
-import { fetchCalendar } from "~/utils/calendar"
+import { fetchCalendar } from "~/dummyData/fetchCalendar"
+import { calendarAsMap } from "~/middleware/calendarFormat"
 
 const AgendaWidget = () => {
   const [activeDate, setActiveDate] = useState(new Date())
   const { data: calendar } = useSWR("/api/calendar", fetchCalendar, {
-    use: [calendarFormat],
+    use: [calendarAsMap],
     suspense: true,
   })
 

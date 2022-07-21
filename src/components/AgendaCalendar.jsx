@@ -15,7 +15,6 @@ const useStyles = createStyles((theme) => ({
     marginBottom: theme.spacing.xl,
     textAlign: "center",
   },
-
   high: {
     backgroundColor: theme.colors.red[5],
   },

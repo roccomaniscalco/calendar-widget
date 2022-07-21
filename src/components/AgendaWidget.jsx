@@ -20,7 +20,7 @@ const AgendaWidget = () => {
           />
         </Center>
         <ScrollArea sx={{ flex: 1 }} type="hover">
-          <AgendaTimeline />
+          <AgendaTimeline activeDate={activeDate}/>
         </ScrollArea>
       </Stack>
     </Card>

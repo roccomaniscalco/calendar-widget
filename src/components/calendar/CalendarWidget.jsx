@@ -15,7 +15,7 @@ const CalendarWidget = () => {
 
   return (
     <Card withBorder p={0} radius="sm" sx={{ height: "100%", width: 300 }}>
-      <Stack spacing={0}>
+      <Stack spacing={0} sx={{height: "100%"}}>
         <ErrorBoundary fallback={<AlertTriangle size={48} />}>
           <Center m="lg">
             <Suspense fallback={<DatePickerSkeleton />}>

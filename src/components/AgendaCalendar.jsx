@@ -78,7 +78,7 @@ const AgendaCalendar = ({ activeDate, handleDateChange }) => {
             indicator:
               classes[calendar.get(date.toISOString())?.risk || "none"],
           }}
-          size={5}
+          size={6}
           offset={10}
         >
           {date.getDate()}

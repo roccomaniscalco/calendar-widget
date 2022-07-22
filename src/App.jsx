@@ -1,26 +1,26 @@
-import { AppShell, Container, Group, Header, Text } from "@mantine/core"
+import { AppShell, Grid, Group, Header, Text } from "@mantine/core"
 import CalendarWidget from "~/components/calendar/CalendarWidget"
 import DarkModeToggle from "~/components/DarkModeToggle"
 
 const appHeader = (
   <Header height={60}>
-    <Container size="xl" px="xl" sx={{ height: "100%" }}>
-      <Group position="apart" sx={{ height: "100%" }}>
-        <Text size="xl" weight="bold">
-          Calendar Widget
-        </Text>
-        <DarkModeToggle />
-      </Group>
-    </Container>
+    <Group position="apart" px="xl" sx={{ height: "100%" }}>
+      <Text size="xl" weight="bold">
+        Calendar Widget
+      </Text>
+      <DarkModeToggle />
+    </Group>
   </Header>
 )
 
 const App = () => {
   return (
-    <AppShell padding={0} header={appHeader}>
-      <Container size="xs" p="xl" sx={{ height: "calc(100vh - 60px)" }}>
-        <CalendarWidget />
-      </Container>
+    <AppShell padding="xl" header={appHeader} fixed>
+      <Grid sx={{ height: "calc(100vh - 108px)" }}>
+        <Grid.Col span={3} sx={{height: "100%"}}>
+          <CalendarWidget />
+        </Grid.Col>
+      </Grid>
     </AppShell>
   )
 }

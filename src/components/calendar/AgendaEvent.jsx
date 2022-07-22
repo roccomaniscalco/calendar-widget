@@ -1,4 +1,4 @@
-import { createStyles, Stack, Text } from "@mantine/core"
+import { createStyles, Text } from "@mantine/core"
 import { oneOf, string } from "prop-types"
 
 const useStyles = createStyles((theme, _params, getRef) => ({
@@ -59,17 +59,17 @@ const AgendaEvent = ({ name, start, end, risk }) => {
   return (
     <div className={cx(classes.root, classes[risk])}>
       {risk && <div className={classes.indicator} />}
-      <Text size="md" weight={600} sx={{ flex: 1, lineHeight: 1.3 }}>
+      <Text size="md" mt={-2} weight={600} sx={{ flex: 1, lineHeight: 1.4 }}>
         {name}
       </Text>
-      <Stack spacing="xs">
-        <Text size="sm" align="right" sx={{ lineHeight: 1 }}>
+      <div>
+        <Text size="sm" align="right" sx={{ lineHeight: 1.3 }}>
           {formatTime(new Date(start))}
         </Text>
-        <Text size="sm" align="right" sx={{ lineHeight: 1 }}>
+        <Text size="sm" align="right" sx={{ lineHeight: 1.3 }}>
           {formatTime(new Date(end))}
         </Text>
-      </Stack>
+      </div>
     </div>
   )
 }

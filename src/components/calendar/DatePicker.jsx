@@ -6,15 +6,6 @@ import { fetchCalendar } from "~/dummyData/fetchCalendar"
 import { calendarAsMap } from "~/middleware/calendarFormat"
 
 const useStyles = createStyles((theme) => ({
-  activeDate: {
-    color:
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[0]
-        : theme.colors.gray[7],
-    fontSize: theme.fontSizes.xl,
-    marginBottom: theme.spacing.xl,
-    textAlign: "center",
-  },
   high: {
     backgroundColor: theme.colors.red[7],
   },
@@ -25,13 +16,10 @@ const useStyles = createStyles((theme) => ({
     backgroundColor: theme.colors.green[7],
   },
   none: {
-    backgroundColor:
-      theme.colorScheme === "dark"
-        ? theme.colors.gray[5]
-        : theme.colors.gray[5],
+    backgroundColor: theme.colors.gray[5],
   },
 
-  // override default styles
+  // important!s are needed to override default styles
   outside: {
     opacity: 0,
   },
@@ -48,6 +36,11 @@ const useStyles = createStyles((theme) => ({
       theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.colors.gray[7]
     } !important`,
   },
+  current: {
+    borderRadius: `${theme.radius.sm} !important`,
+    backgroundColor: `${theme.colors.blue[7]} !important`,
+    color: `${theme.white} !important`,
+  },
 }))
 
 const DatePicker = ({ activeDate, handleDateChange }) => {
@@ -57,18 +50,28 @@ const DatePicker = ({ activeDate, handleDateChange }) => {
     suspense: true,
   })
 
+  const isCurrentDate = (date) => {
+    const currentDate = new Date()
+    return (
+      date.getFullYear() === currentDate.getFullYear() &&
+      date.getMonth() === currentDate.getMonth() &&
+      date.getDate() === currentDate.getDate()
+    )
+  }
+
   return (
     <Calendar
       value={activeDate}
       onChange={handleDateChange}
       disableOutsideEvents
       allowLevelChange={false}
-      dayClassName={(_date, modifiers) =>
+      dayClassName={(date, modifiers) =>
         cx({
           // order matters here
           [classes.outside]: modifiers.outside,
           [classes.weekend]: modifiers.weekend,
           [classes.selected]: modifiers.selected,
+          [classes.current]: isCurrentDate(date),
         })
       }
       renderDay={(date) => (

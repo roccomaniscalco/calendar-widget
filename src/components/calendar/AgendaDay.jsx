@@ -1,6 +1,7 @@
 import { Box, createStyles, Stack, Text } from "@mantine/core"
 import { arrayOf, instanceOf, oneOf, shape, string } from "prop-types"
 import AgendaEvent from "~/components/calendar/AgendaEvent"
+import { priority } from "~/constants/priority"
 
 const useStyles = createStyles((theme) => ({
   stickyHeader: {
@@ -41,7 +42,7 @@ const AgendaDay = ({ date, events }) => {
               name={event.name}
               start={event.start}
               end={event.end}
-              risk={event.risk}
+              priority={event.priority}
               key={idx}
             />
           ))
@@ -62,7 +63,7 @@ AgendaDay.propTypes = {
       name: string.isRequired,
       start: string.isRequired,
       end: string.isRequired,
-      risk: oneOf(["low", "medium", "high"]),
+      priority: oneOf(Object.values(priority)),
     })
   ),
 }

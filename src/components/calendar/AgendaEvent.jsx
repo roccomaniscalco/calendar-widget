@@ -1,5 +1,6 @@
 import { createStyles, Text } from "@mantine/core"
 import { oneOf, string } from "prop-types"
+import { priority } from "~/constants/priority"
 
 const useStyles = createStyles((theme, _params, getRef) => ({
   root: {
@@ -78,7 +79,7 @@ AgendaEvent.propTypes = {
   name: string.isRequired,
   start: string.isRequired,
   end: string.isRequired,
-  risk: oneOf(["low", "medium", "high"]),
+  risk: oneOf(Object.values(priority)),
 }
 
 export default AgendaEvent

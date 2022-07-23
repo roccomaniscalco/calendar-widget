@@ -15,8 +15,8 @@ const appHeader = (
 
 const App = () => {
   return (
-    <AppShell padding="xl" header={appHeader} fixed>
-      <Grid sx={{ height: "calc(100vh - 108px)" }}>
+    <AppShell padding="xl"header={appHeader} fixed>
+      <Grid gutter={0} sx={{ height: "calc(100vh - 108px)" }}>
         <Grid.Col span={3} sx={{height: "100%"}}>
           <CalendarWidget />
         </Grid.Col>

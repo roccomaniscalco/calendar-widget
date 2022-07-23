@@ -1,6 +1,6 @@
 {
   "2022-07-22T04:00:00.000Z": {
-    "risk": "high",
+    "priority": "high",
     "events": [
       {
         "name": "take a nap",
@@ -16,7 +16,7 @@
         "name": "perform open heart surgery",
         "start": "2022-07-22T07:00:00.000Z",
         "end": "2022-07-22T10:00:00.000Z",
-        "risk": "high"
+        "priority": "high"
       }
     ]
   },
@@ -91,7 +91,7 @@
     ]
   },
   "2022-07-08T04:00:00.000Z": {
-    "risk": "medium",
+    "priority": "medium",
     "events": [
       {
         "name": "write a blog post",
@@ -107,18 +107,18 @@
         "name": "yearly checkup",
         "start": "2022-07-08T16:30:00.000Z",
         "end": "2022-07-08T17:16:30.000Z",
-        "risk": "low"
+        "priority": "low"
       },
       {
         "name": "Cardiac Catheterization",
         "start": "2022-07-08T17:16:30.000Z",
         "end": "2022-07-08T17:16:30.000Z",
-        "risk": "medium"
+        "priority": "medium"
       }
     ]
   },
   "2022-07-14T04:00:00.000Z": {
-    "risk": "low",
+    "priority": "low",
     "events": [
       {
         "name": "clean the house",
@@ -129,7 +129,7 @@
         "name": "yearly checkup",
         "start": "2022-07-14T15:16:00.000Z",
         "end": "2022-07-14T16:16:00.000Z",
-        "risk": "low"
+        "priority": "low"
       },
       {
         "name": "buy groceries",

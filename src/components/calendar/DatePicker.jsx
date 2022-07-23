@@ -76,7 +76,7 @@ const DatePicker = ({ activeDate, handleDateChange }) => {
           disabled={!calendar.has(date.toISOString())}
           classNames={{
             indicator:
-              classes[calendar.get(date.toISOString())?.risk || "none"],
+              classes[calendar.get(date.toISOString())?.priority || "none"],
           }}
           size={6}
           offset={10}

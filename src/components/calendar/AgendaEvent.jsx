@@ -47,7 +47,7 @@ const useStyles = createStyles((theme, _params, getRef) => ({
   },
 }))
 
-const AgendaEvent = ({ name, start, end, risk }) => {
+const AgendaEvent = ({ name, start, end, priority }) => {
   const { classes, cx } = useStyles()
 
   const formatTime = (date) => {
@@ -58,8 +58,8 @@ const AgendaEvent = ({ name, start, end, risk }) => {
   }
 
   return (
-    <div className={cx(classes.root, classes[risk])}>
-      {risk && <div className={classes.indicator} />}
+    <div className={cx(classes.root, classes[priority])}>
+      {priority && <div className={classes.indicator} />}
       <Text size="md" mt={-2} weight={600} sx={{ flex: 1, lineHeight: 1.4 }}>
         {name}
       </Text>
@@ -79,7 +79,7 @@ AgendaEvent.propTypes = {
   name: string.isRequired,
   start: string.isRequired,
   end: string.isRequired,
-  risk: oneOf(Object.values(priority)),
+  priority: oneOf(Object.values(priority)),
 }
 
 export default AgendaEvent

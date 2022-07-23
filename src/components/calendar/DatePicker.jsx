@@ -63,12 +63,10 @@ const DatePicker = ({ activeDate, handleDateChange }) => {
     <Calendar
       value={activeDate}
       onChange={handleDateChange}
-      disableOutsideEvents
       allowLevelChange={false}
       dayClassName={(date, modifiers) =>
         cx({
           // order matters here
-          [classes.outside]: modifiers.outside,
           [classes.weekend]: modifiers.weekend,
           [classes.selected]: modifiers.selected,
           [classes.current]: isCurrentDate(date),

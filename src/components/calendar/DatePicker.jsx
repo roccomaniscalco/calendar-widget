@@ -2,20 +2,21 @@ import { createStyles, Indicator } from "@mantine/core"
 import { Calendar } from "@mantine/dates"
 import { func, instanceOf } from "prop-types"
 import useSWR from "swr"
+import { priority } from "~/constants/priority"
 import { fetchCalendar } from "~/dummyData/fetchCalendar"
 import { calendarAsMap } from "~/middleware/calendarFormat"
 
 const useStyles = createStyles((theme) => ({
-  high: {
+  [priority.HIGH]: {
     backgroundColor: theme.colors.red[7],
   },
-  medium: {
+  [priority.MEDIUM]: {
     backgroundColor: theme.colors.yellow[7],
   },
-  low: {
+  [priority.LOW]: {
     backgroundColor: theme.colors.green[7],
   },
-  none: {
+  [priority.NONE]: {
     backgroundColor: theme.colors.gray[5],
   },
 
@@ -77,7 +78,7 @@ const DatePicker = ({ activeDate, handleDateChange }) => {
           disabled={!calendar.has(date.toISOString())}
           classNames={{
             indicator:
-              classes[calendar.get(date.toISOString())?.priority || "none"],
+              classes[calendar.get(date.toISOString())?.priority],
           }}
           size={6}
           offset={10}

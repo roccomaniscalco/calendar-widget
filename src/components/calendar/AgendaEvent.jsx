@@ -8,17 +8,13 @@ const useStyles = createStyles((theme, _params, getRef) => ({
     gap: theme.spacing.xs,
     borderRadius: 5,
     padding: theme.spacing.xs,
-    backgroundColor:
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[6]
-        : theme.colors.gray[1],
   },
   indicator: {
     ref: getRef("indicator"),
     borderRadius: theme.radius.md,
     width: 3,
   },
-  high: {
+  [priority.HIGH]: {
     backgroundColor:
       theme.colorScheme === "dark"
         ? theme.fn.darken(theme.colors.red[3], 0.8)
@@ -27,7 +23,7 @@ const useStyles = createStyles((theme, _params, getRef) => ({
       backgroundColor: theme.colors.red[7],
     },
   },
-  medium: {
+  [priority.MEDIUM]: {
     backgroundColor:
       theme.colorScheme === "dark"
         ? theme.fn.darken(theme.colors.yellow[3], 0.8)
@@ -36,13 +32,22 @@ const useStyles = createStyles((theme, _params, getRef) => ({
       backgroundColor: theme.colors.yellow[7],
     },
   },
-  low: {
+  [priority.LOW]: {
     backgroundColor:
       theme.colorScheme === "dark"
         ? theme.fn.darken(theme.colors.green[3], 0.8)
         : theme.colors.green[1],
     [`& .${getRef("indicator")}`]: {
       backgroundColor: theme.colors.green[7],
+    },
+  },
+  [priority.NONE]: {
+    backgroundColor:
+      theme.colorScheme === "dark"
+        ? theme.colors.dark[6]
+        : theme.colors.gray[1],
+    [`& .${getRef("indicator")}`]: {
+      display: "none",
     },
   },
 }))
@@ -59,7 +64,7 @@ const AgendaEvent = ({ name, start, end, priority }) => {
 
   return (
     <div className={cx(classes.root, classes[priority])}>
-      {priority && <div className={classes.indicator} />}
+      <div className={classes.indicator} />
       <Text size="md" mt={-2} weight={600} sx={{ flex: 1, lineHeight: 1.4 }}>
         {name}
       </Text>

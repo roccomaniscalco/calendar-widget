@@ -1,3 +1,5 @@
+import { priority } from "~/constants/priority"
+
 // return a random number between min and max integers
 const getRandomNumber = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min
@@ -19,11 +21,11 @@ const getEndOfDay = (date) => {
 // return a random calendar object for the current year
 const getRandomCalendar = () => {
   const NUM_OF_DAYS = 200
-  const MAX_NUM_OF_EVENTS_PER_DAY = 10
+  const MAX_NUM_OF_EVENTS_PER_DAY = 5
   const START = new Date(`${new Date().getFullYear()}-01-01`)
   const END = new Date(`${new Date().getFullYear()}-12-31`)
   const EVENT_NAMES = ["Go to the gym", "Study", "Go to the movies", "Code :D"]
-  const EVENT_PRIORITY = ["low", "medium", "high", undefined]
+  const EVENT_PRIORITY = Object.values(priority)
 
   // fill days with random dates with time set to 00:00:00
   const days = []
@@ -32,7 +34,7 @@ const getRandomCalendar = () => {
     if (!days.includes(date)) days.push(date)
   }
 
-  // fill calendar with random events
+  // fill calendar with random events for each day
   const calendar = {}
   days.forEach((day) => {
     const numOfEvents = getRandomNumber(0, MAX_NUM_OF_EVENTS_PER_DAY)
@@ -55,12 +57,8 @@ const getRandomCalendar = () => {
 }
 
 export function fetchCalendar() {
-  const PERCENT_CHANCE_OF_ERROR = 10
-
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     setTimeout(() => {
-      if (getRandomNumber(0, 100) < PERCENT_CHANCE_OF_ERROR)
-        reject(new Error("Failed to fetch calendar"))
       resolve(getRandomCalendar())
     }, 2000)
   })

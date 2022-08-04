@@ -5,16 +5,15 @@ const getHighestPriority = (events) => {
   if (uniquePriorities.has(priority.HIGH)) return priority.HIGH
   if (uniquePriorities.has(priority.MEDIUM)) return priority.MEDIUM
   if (uniquePriorities.has(priority.LOW)) return priority.LOW
-  return undefined
+  return priority.NONE
 }
 
-const sortEvents = (events) => {
+const sortEvents = (events) =>
   events.sort((a, b) => {
     if (a.start < b.start) return -1
     if (a.start > b.start) return 1
     return 0
   })
-}
 
 // convert calendar to Map for perf :P
 function calendarToMap(calendar) {
@@ -23,7 +22,6 @@ function calendarToMap(calendar) {
     calendarMap.set(dayIso, {
       priority: getHighestPriority(day.events),
       events: sortEvents(day.events),
-      ...day,
     })
   })
   return calendarMap

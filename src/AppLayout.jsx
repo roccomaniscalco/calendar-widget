@@ -49,7 +49,7 @@ const AppHeader = () => {
           <DarkModeToggle />
           <Avatar
             src="pfp.jpg"
-            alt="it's me"
+            alt="Rocco Maniscalco profile"
             size="sm"
             radius="sm"
             component={ActionIcon}

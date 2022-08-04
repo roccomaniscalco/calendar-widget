@@ -19,22 +19,24 @@ const ThemeProvider = ({ children }) => {
       <MantineProvider
         withNormalizeCSS
         withGlobalStyles
-        theme={{ colorScheme }}
-        styles={{
-          Card: (theme) => ({
-            root: {
-              backgroundColor:
-                theme.colorScheme === "light"
-                  ? theme.white
-                  : theme.colors.dark[7],
-              boxShadow: theme.shadows.lg,
+        theme={{
+          colorScheme,
+          components: {
+            Paper: {
+              styles: (theme) => ({
+                root: {
+                  backgroundColor:
+                    theme.colorScheme === "light"
+                      ? theme.white
+                      : theme.colors.dark[7],
+                  borderColor:
+                    theme.colorScheme === "light"
+                      ? theme.colors.gray[2]
+                      : theme.colors.dark[6],
+                },
+              }),
             },
-          }),
-          Title: (theme) => ({
-            root: {
-              color: theme.colorScheme === "light" ? theme.black : theme.white,
-            },
-          }),
+          },
         }}
       >
         <Global
@@ -43,7 +45,7 @@ const ThemeProvider = ({ children }) => {
               backgroundColor:
                 theme.colorScheme === "dark"
                   ? theme.colors.dark[8]
-                  : theme.white,
+                  : theme.colors.gray[0],
             },
           })}
         />

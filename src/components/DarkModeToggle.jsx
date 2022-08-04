@@ -30,13 +30,13 @@ const DarkModeToggle = () => {
 
   return (
     <div className={classes.root}>
-      <Sun className={cx(classes.icon, classes.iconLight)} size={18} />
-      <MoonStars className={cx(classes.icon, classes.iconDark)} size={18} />
+      <Sun className={cx(classes.icon, classes.iconLight)} size={14} />
+      <MoonStars className={cx(classes.icon, classes.iconDark)} size={14} />
       <Switch
         checked={colorScheme === "dark"}
         onChange={toggleColorScheme}
-        size="md"
-        color="gray"
+        size="sm"
+        color="indigo"
       />
     </div>
   )

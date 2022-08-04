@@ -1,4 +1,4 @@
-import { Center, Paper, ScrollArea, Stack } from "@mantine/core"
+import { Card, Center, ScrollArea, Stack } from "@mantine/core"
 import { Suspense, useRef, useState } from "react"
 import { flushSync } from "react-dom"
 import { AlertTriangle } from "tabler-icons-react"
@@ -18,7 +18,7 @@ const CalendarWidget = () => {
   }
 
   return (
-    <Paper withBorder p={0} sx={{ height: "100%", minWidth: "min-content", overflow: "hidden" }}>
+    <Card withBorder p={0} sx={{ height: "100%", minWidth: "min-content", overflow: "hidden" }}>
       <Stack spacing={0} sx={{ height: "100%" }}>
         <ErrorBoundary fallback={<AlertTriangle size={48} />}>
           <Center my="md" mx="md">
@@ -36,7 +36,7 @@ const CalendarWidget = () => {
           </ScrollArea>
         </ErrorBoundary>
       </Stack>
-    </Paper>
+    </Card>
   )
 }
 

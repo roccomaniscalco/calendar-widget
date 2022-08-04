@@ -22,7 +22,7 @@ const ThemeProvider = ({ children }) => {
         theme={{
           colorScheme,
           components: {
-            Paper: {
+            Card: {
               styles: (theme) => ({
                 root: {
                   backgroundColor:

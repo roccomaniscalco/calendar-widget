@@ -13,6 +13,7 @@ import {
 import { startTransition } from "react"
 import { Outlet, useLocation, useNavigate } from "react-router-dom"
 import {
+  Award,
   Calendar,
   Home,
   Logout,
@@ -53,6 +54,9 @@ const AppHeader = () => {
               </Tabs.Tab>
               <Tabs.Tab value="/discussions" icon={<MessageCircle size={14} />}>
                 <Text>Discussions</Text>
+              </Tabs.Tab>
+              <Tabs.Tab value="/rewards" icon={<Award size={14} />}>
+                <Text>Rewards</Text>
               </Tabs.Tab>
               <Tabs.Tab value="/calendar" icon={<Calendar size={14} />}>
                 <Text>Calendar</Text>

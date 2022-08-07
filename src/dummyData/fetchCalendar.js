@@ -24,7 +24,11 @@ const getRandomCalendar = () => {
   const MAX_NUM_OF_EVENTS_PER_DAY = 5
   const START = new Date(`${new Date().getFullYear()}-01-01`)
   const END = new Date(`${new Date().getFullYear()}-12-31`)
-  const EVENT_NAMES = ["Go to the gym", "Study", "Go to the movies", "Code :D"]
+  const EVENT_NAMES = [
+    "Appointment with Patient",
+    "Meeting with Doctor",
+    "Examination Appointment",
+  ]
   const EVENT_PRIORITY = Object.values(priority)
 
   // fill days with random dates with time set to 00:00:00

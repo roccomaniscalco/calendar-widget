@@ -5,15 +5,54 @@ import {
   Divider,
   Group,
   Image,
+  ScrollArea,
   Stack,
   Text,
 } from "@mantine/core"
+import { IconHeart, IconMedicalCross, IconSchool } from "@tabler/icons"
+import CommunityLink from "~/components/discsussion/CommunityLink"
+
+const communities = [
+  {
+    name: "The ICU",
+    memberCount: 137,
+    href: "#",
+    Icon: IconMedicalCross,
+    color: "teal",
+  },
+  {
+    name: "Super Scrubs",
+    memberCount: 64,
+    href: "#",
+    color: "indigo",
+  },
+  {
+    name: "Life Savers",
+    memberCount: 89,
+    href: "#",
+    Icon: IconHeart,
+    color: "red",
+  },
+  {
+    name: "Med Students",
+    memberCount: 42,
+    href: "#",
+    Icon: IconSchool,
+    color: "blue",
+  },
+]
 
 const ProfileSideBar = () => {
   return (
     <Card
       withBorder
-      sx={{ height: "100%", minWidth: 250, overflow: "hidden" }}
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        height: "100%",
+        minWidth: 250,
+
+      }}
     >
       <Card.Section>
         <Image
@@ -63,6 +102,18 @@ const ProfileSideBar = () => {
           </Stack>
         </Group>
         <Divider />
+      </Card.Section>
+
+      <Text size="xs" color="dimmed" transform="uppercase" mb="xs">
+        Communities
+      </Text>
+
+      <Card.Section component={ScrollArea} sx={{ flex: 1 }}>
+        <Stack spacing={0}>
+          {communities.map((community) => (
+            <CommunityLink key={community.name} {...community} />
+          ))}
+        </Stack>
       </Card.Section>
     </Card>
   )

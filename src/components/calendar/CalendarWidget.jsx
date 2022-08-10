@@ -1,7 +1,7 @@
 import { Card, Center, ScrollArea, Stack } from "@mantine/core"
 import { Suspense, useRef, useState } from "react"
 import { flushSync } from "react-dom"
-import { AlertTriangle } from "tabler-icons-react"
+import { IconAlertTriangle } from "@tabler/icons"
 import Agenda from "~/components/calendar/Agenda"
 import AgendaSkeleton from "~/components/calendar/AgendaSkeleton"
 import DatePicker from "~/components/calendar/DatePicker"
@@ -20,7 +20,7 @@ const CalendarWidget = () => {
   return (
     <Card withBorder p={0} sx={{ height: "100%", minWidth: "min-content", overflow: "hidden" }}>
       <Stack spacing={0} sx={{ height: "100%" }}>
-        <ErrorBoundary fallback={<AlertTriangle size={48} />}>
+        <ErrorBoundary fallback={<IconAlertTriangle size={48} />}>
           <Center my="md" mx="md">
             <Suspense fallback={<DatePickerSkeleton />}>
               <DatePicker

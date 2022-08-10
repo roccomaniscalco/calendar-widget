@@ -13,14 +13,14 @@ import {
 import { startTransition } from "react"
 import { Outlet, useLocation, useNavigate } from "react-router-dom"
 import {
-  Award,
-  Calendar,
-  Home,
-  Logout,
-  MessageCircle,
-  Search,
-  Settings,
-} from "tabler-icons-react"
+  IconAward,
+  IconCalendar,
+  IconHome,
+  IconLogout,
+  IconMessageCircle,
+  IconSearch,
+  IconSettings,
+} from "@tabler/icons"
 import DarkModeToggle from "~/components/DarkModeToggle"
 
 const AppHeader = () => {
@@ -49,16 +49,16 @@ const AppHeader = () => {
             })}
           >
             <Tabs.List>
-              <Tabs.Tab value="/home" icon={<Home size={14} />}>
+              <Tabs.Tab value="/home" icon={<IconHome size={14} />}>
                 <Text>Home</Text>
               </Tabs.Tab>
-              <Tabs.Tab value="/discussions" icon={<MessageCircle size={14} />}>
+              <Tabs.Tab value="/discussions" icon={<IconMessageCircle size={14} />}>
                 <Text>Discussions</Text>
               </Tabs.Tab>
-              <Tabs.Tab value="/rewards" icon={<Award size={14} />}>
+              <Tabs.Tab value="/rewards" icon={<IconAward size={14} />}>
                 <Text>Rewards</Text>
               </Tabs.Tab>
-              <Tabs.Tab value="/calendar" icon={<Calendar size={14} />}>
+              <Tabs.Tab value="/calendar" icon={<IconCalendar size={14} />}>
                 <Text>Calendar</Text>
               </Tabs.Tab>
             </Tabs.List>
@@ -87,7 +87,7 @@ const AppHeader = () => {
               </Menu.Item>
               <Menu.Divider />
               <Menu.Item
-                icon={<Search size={14} />}
+                icon={<IconSearch size={14} />}
                 rightSection={
                   <Text size="xs" color="dimmed">
                     ⌘K
@@ -99,19 +99,19 @@ const AppHeader = () => {
               <Menu.Item
                 icon={
                   <Indicator size={8} color="teal">
-                    <MessageCircle size={14} />
+                    <IconMessageCircle size={14} />
                   </Indicator>
                 }
               >
                 Mentions
               </Menu.Item>
-              <Menu.Item icon={<Settings size={14} />}>
+              <Menu.Item icon={<IconSettings size={14} />}>
                 <Group position="apart">
                   Settings <DarkModeToggle />
                 </Group>
               </Menu.Item>
               <Menu.Divider />
-              <Menu.Item icon={<Logout size={14} />} color="red">
+              <Menu.Item icon={<IconLogout size={14} />} color="red">
                 Sign Out
               </Menu.Item>
             </Menu.Dropdown>

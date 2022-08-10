@@ -1,12 +1,12 @@
 import { ActionIcon, Center } from "@mantine/core"
 import { useState } from "react"
 import {
-  MoodConfuzed,
-  MoodEmpty,
-  MoodHappy,
-  MoodSad,
-  MoodSmile,
-} from "tabler-icons-react"
+  IconMoodConfuzed,
+  IconMoodEmpty,
+  IconMoodHappy,
+  IconMoodSad,
+  IconMoodSmile,
+} from "@tabler/icons"
 
 function WellnessRating() {
   const iconSize = "5rem"
@@ -29,7 +29,7 @@ function WellnessRating() {
         variant="transparent"
         value="sad"
       >
-        <MoodSad size={iconSize} strokeWidth={1.5} />
+        <IconMoodSad size={iconSize} strokeWidth={1.5} />
       </ActionIcon>
       <ActionIcon
         color={activeValue === "less-sad" ? "orange" : "gray"}
@@ -37,7 +37,7 @@ function WellnessRating() {
         variant="transparent"
         value="less-sad"
       >
-        <MoodConfuzed size={iconSize} strokeWidth={1.5} />
+        <IconMoodConfuzed size={iconSize} strokeWidth={1.5} />
       </ActionIcon>
       <ActionIcon
         color={activeValue === "neutral" ? "yellow" : "gray"}
@@ -45,7 +45,7 @@ function WellnessRating() {
         variant="transparent"
         value="neutral"
       >
-        <MoodEmpty size={iconSize} strokeWidth={1.5} />
+        <IconMoodEmpty size={iconSize} strokeWidth={1.5} />
       </ActionIcon>
       <ActionIcon
         color={activeValue === "less-happy" ? "lime" : "gray"}
@@ -53,7 +53,7 @@ function WellnessRating() {
         variant="transparent"
         value="less-happy"
       >
-        <MoodSmile size={iconSize} strokeWidth={1.5} />
+        <IconMoodSmile size={iconSize} strokeWidth={1.5} />
       </ActionIcon>
       <ActionIcon
         color={activeValue === "happy" ? "green" : "gray"}
@@ -61,7 +61,7 @@ function WellnessRating() {
         variant="transparent"
         value="happy"
       >
-        <MoodHappy size={iconSize} strokeWidth={1.5} />
+        <IconMoodHappy size={iconSize} strokeWidth={1.5} />
       </ActionIcon>
     </Center>
   )

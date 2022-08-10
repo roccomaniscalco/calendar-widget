@@ -1,5 +1,5 @@
 import { createStyles, Switch, useMantineColorScheme } from "@mantine/core"
-import { MoonStars, Sun } from "tabler-icons-react"
+import { IconMoonStars, IconSun } from "@tabler/icons"
 
 const useStyles = createStyles((theme) => ({
   root: {
@@ -30,8 +30,8 @@ const DarkModeToggle = () => {
 
   return (
     <div className={classes.root}>
-      <Sun className={cx(classes.icon, classes.iconLight)} size={14} />
-      <MoonStars className={cx(classes.icon, classes.iconDark)} size={14} />
+      <IconSun className={cx(classes.icon, classes.iconLight)} size={14} />
+      <IconMoonStars className={cx(classes.icon, classes.iconDark)} size={14} />
       <Switch
         checked={colorScheme === "dark"}
         onChange={toggleColorScheme}

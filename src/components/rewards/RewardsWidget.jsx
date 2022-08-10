@@ -1,5 +1,5 @@
 import { Box, Card, Container, Text } from "@mantine/core"
-import { Coin } from "tabler-icons-react"
+import { IconCoin } from "@tabler/icons"
 import ProgressRing from "~/components/rewards/ProgressRing"
 import RewardsCoins from "~/components/rewards/RewardsCoins"
 import RewardsLink from "~/components/rewards/RewardsLink"
@@ -27,7 +27,7 @@ const RewardsWidget = () => {
           flexWrap: "no-wrap",
         }}
       >
-        <Coin size={90} />
+        <IconCoin size={90} />
         <Container align="left" width="50%" p="sm">
           <RewardsCoins />
           <RewardsLink />

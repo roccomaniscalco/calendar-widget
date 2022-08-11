@@ -6,11 +6,10 @@ import {
   Group,
   Image,
   ScrollArea,
-  Stack,
-  Text,
+  Stack, Text
 } from "@mantine/core"
 import { IconHeart, IconMedicalCross, IconSchool } from "@tabler/icons"
-import CommunityLink from "~/components/discsussion/CommunityLink"
+import CommunityTabs from "~/components/discsussion/CommunityTabs"
 
 const communities = [
   {
@@ -51,7 +50,6 @@ const ProfileSideBar = () => {
         flexDirection: "column",
         height: "100%",
         minWidth: 250,
-
       }}
     >
       <Card.Section>
@@ -107,13 +105,8 @@ const ProfileSideBar = () => {
       <Text size="xs" color="dimmed" transform="uppercase" mb="xs">
         Communities
       </Text>
-
       <Card.Section component={ScrollArea} sx={{ flex: 1 }}>
-        <Stack spacing={0}>
-          {communities.map((community) => (
-            <CommunityLink key={community.name} {...community} />
-          ))}
-        </Stack>
+        <CommunityTabs communities={communities}/>
       </Card.Section>
     </Card>
   )

@@ -1,17 +1,30 @@
-import { Grid } from "@mantine/core"
+import { Container, Group, MediaQuery, Stack } from "@mantine/core"
 import DiscussionPost from "~/components/discsussion/DiscussionPost"
 import ProfileSideBar from "~/components/discsussion/ProfileSideBar"
 
 const DiscussionsPage = () => {
   return (
-    <Grid sx={{ height: "calc(100vh - 98px)" }}>
-      <Grid.Col span={4} sx={{ height: "100%" }}>
+    <Group
+      noWrap
+      spacing="lg"
+      align="start"
+      sx={{ width: "100%", position: "relative" }}
+    >
+      <MediaQuery smallerThan="sm" styles={{ display: "none" }}>
         <ProfileSideBar />
-      </Grid.Col>
-      <Grid.Col span={8}>
-        <DiscussionPost/>
-      </Grid.Col>
-    </Grid>
+      </MediaQuery>
+
+      <Container sx={{ flex: 1, height: "100%" }} p={0}>
+        <Stack>
+          <DiscussionPost />
+          <DiscussionPost />
+          <DiscussionPost />
+          <DiscussionPost />
+          <DiscussionPost />
+          <DiscussionPost />
+        </Stack>
+      </Container>
+    </Group>
   )
 }
 

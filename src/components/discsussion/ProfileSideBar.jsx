@@ -6,9 +6,11 @@ import {
   Group,
   Image,
   ScrollArea,
-  Stack, Text
+  Stack,
+  Text,
 } from "@mantine/core"
 import { IconHeart, IconMedicalCross, IconSchool } from "@tabler/icons"
+import { string } from "prop-types"
 import CommunityTabs from "~/components/discsussion/CommunityTabs"
 
 const communities = [
@@ -41,15 +43,19 @@ const communities = [
   },
 ]
 
-const ProfileSideBar = () => {
+const ProfileSideBar = ({ className }) => {
   return (
     <Card
+      className={className}
       withBorder
       sx={{
+        position: "sticky",
         display: "flex",
         flexDirection: "column",
-        height: "100%",
-        minWidth: 250,
+        width: 250,
+        // magic numbers here for the height of the header + padding
+        top: 70,
+        height: "calc(100vh - 90px)",
       }}
     >
       <Card.Section>
@@ -102,14 +108,18 @@ const ProfileSideBar = () => {
         <Divider />
       </Card.Section>
 
-      <Text size="xs" color="dimmed" transform="uppercase" mb="xs">
+      <Text size="xs" color="dimmed" transform="uppercase">
         Communities
       </Text>
-      <Card.Section component={ScrollArea} sx={{ flex: 1 }}>
-        <CommunityTabs communities={communities}/>
+      <Card.Section mt="sm" component={ScrollArea} sx={{ flex: 1 }}>
+        <CommunityTabs communities={communities} />
       </Card.Section>
     </Card>
   )
+}
+
+ProfileSideBar.propTypes = {
+  className: string,
 }
 
 export default ProfileSideBar

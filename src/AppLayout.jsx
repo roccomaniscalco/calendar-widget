@@ -33,7 +33,7 @@ const AppHeader = () => {
 
   return (
     <Header height={50}>
-      <Group position="apart" px="xl" sx={{ height: "100%" }}>
+      <Group position="apart" px="lg" sx={{ height: "100%" }}>
         <Title order={3}>MAGMUTUAL</Title>
         <Group sx={{ height: "100%" }}>
           <Tabs
@@ -124,7 +124,7 @@ const AppHeader = () => {
 
 const AppLayout = () => {
   return (
-    <AppShell padding="xl" header={<AppHeader />}>
+    <AppShell padding="lg" header={<AppHeader />}>
       <Outlet />
     </AppShell>
   )
